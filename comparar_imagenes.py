@@ -2,7 +2,7 @@ from PIL import Image
 import os
 
 # Ruta de la carpeta con las imágenes
-carpeta = 'pokemon/Greninja'
+carpeta = 'pokemon/Meowth'
 
 # Diccionario para almacenar las imágenes idénticas
 imagenes_ident = {}
@@ -32,10 +32,10 @@ for imagen, imagenes_iguales in imagenes_ident.items():
     if not os.path.exists('pokemon/duplicadas'):
         os.makedirs('pokemon/duplicadas')
     # movemos la imagen a la carpeta duplicadas
-    os.rename(f'pokemon/Greninja/{imagen}', f'pokemon/duplicadas/{imagen}')
+    os.rename(carpeta + '/' + imagen, 'pokemon/duplicadas/' + imagen)
     # borramos las imagenes duplicadas
     for imagen_duplicada in imagenes_iguales:
-        os.remove(f'pokemon/Greninja/{imagen_duplicada}')
+        os.remove(carpeta + '/' + imagen_duplicada)
      
     
 # Si no hay imágenes idénticas, mostrar un mensaje
