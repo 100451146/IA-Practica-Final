@@ -8,7 +8,7 @@ def download_all_images(query):
 
     # Searching for the query in Google Images
     search_query = query + " images"
-    for j in search(search_query, num=10, stop=10, pause=2):
+    for j in search(search_query):
         if 'https://encrypted-tbn0.gstatic.com/images' in j:
             continue
         page = requests.get(j)
@@ -39,6 +39,6 @@ def download_all_images(query):
     return
 
 
-query = "greninja picture"  # Enter your search query
+query = "squirtle in game"  # Enter your search query
 
 download_all_images(query)
