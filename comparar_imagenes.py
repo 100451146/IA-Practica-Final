@@ -2,7 +2,7 @@ from PIL import Image
 import os
 
 # Ruta de la carpeta con las imágenes
-carpeta = 'pokemon/Squirtle'
+carpeta = 'pokemon/Pikachu'
 
 # Diccionario para almacenar las imágenes idénticas
 imagenes_ident = {}
