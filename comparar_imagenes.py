@@ -2,7 +2,7 @@ from PIL import Image
 import os
 
 # Ruta de la carpeta con las imágenes
-carpeta = 'pokemon/Pikachu'
+carpeta = 'pokemon/Bulbasaur'
 
 # Diccionario para almacenar las imágenes idénticas
 imagenes_ident = {}
@@ -25,20 +25,25 @@ for nombre_imagen1 in os.listdir(carpeta):
 # Mostrar las imágenes idénticas encontradas
 for imagen, imagenes_iguales in imagenes_ident.items():
     print(f"La imagen {imagen} es idéntica a: {', '.join(imagenes_iguales)}")
-    
+
 # Sacamos la imagen duplicada de la carpeta y la movemos a otra carpeta, dejando solamente una copia de la imagen
 for imagen, imagenes_iguales in imagenes_ident.items():
     # si no existe la carpeta la creamos
     if not os.path.exists('pokemon/duplicadas'):
         os.makedirs('pokemon/duplicadas')
     # movemos la imagen a la carpeta duplicadas
-    os.rename(carpeta + '/' + imagen, 'pokemon/duplicadas/' + imagen)
+    try:
+        os.rename(carpeta + '/' + imagen, 'pokemon/duplicadas/' + imagen)
+    except:
+        print("Error al mover la imagen", imagen)
     # borramos las imagenes duplicadas
     for imagen_duplicada in imagenes_iguales:
-        os.remove(carpeta + '/' + imagen_duplicada)
-     
-    
+        try:
+            os.remove(carpeta + '/' + imagen_duplicada)
+        except:
+            print("Error al borrar la imagen", imagen_duplicada)
+
+
 # Si no hay imágenes idénticas, mostrar un mensaje
 if len(imagenes_ident) == 0:
     print("No hay imágenes idénticas.")
-

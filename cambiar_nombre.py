@@ -4,7 +4,7 @@
 import os
 
 # Seleccionamos la carpeta con las imágenes a normalizar
-pokemon = 'Pikachu' # Cambiar para cada nombre de pokemon
+pokemon = 'Bulbasaur'  # Cambiar para cada nombre de pokemon
 path = 'pokemon/'+pokemon
 
 # Recorremos las imágenes de la carpeta y vamos cambiando el nombre
@@ -12,6 +12,5 @@ i = 0
 for filename in os.listdir(path):
     os.rename(path+'/'+filename, path+'/'+pokemon+'_'+str(i)+'.png')
     i += 1
-    
-print('Nombres cambiados')
 
+print('Nombres cambiados')
