@@ -6,7 +6,7 @@ import cv2
 import numpy as np
 
 # Seleccionamos la carpeta con las imágenes a cambiar
-pokemon = 'MrMime' # Cambiar para cada nombre de pokemon
+pokemon = 'Snorlax' # Cambiar para cada nombre de pokemon
 path = 'pokemon/'+pokemon
 
 # Recorremos las imágenes de la carpeta y vamos aplicando el filtro
