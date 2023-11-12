@@ -14,7 +14,12 @@ for filename in os.listdir(path):
     # Normalizar
     img = Image.open(path+'/'+filename)
     img = img.resize((128,128))
-    img.save(path+'/'+pokemon+'_'+str(i)+'.png')
+    # Si la imagen es CMYK, convertir a RGB
+    if img.mode == 'CMYK':
+        img = img.convert('RGB')
+        img.save(path+'/'+pokemon+'_'+str(i)+'.png')
+    else:
+        img.save(path+'/'+pokemon+'_'+str(i)+'.png')
     i += 1
     
 print('Imágenes normalizadas')
