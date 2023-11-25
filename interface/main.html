@@ -3,12 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <title>Pokemonos GPT</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <h1>Subir imagen</h1>
-  <form action="#" method="post" enctype="multipart/form-data">
-    <input type="file" name="imagen" accept="image/*">
-    <input type="submit" value="Subir imágen">
-  </form>
+<body> 
+  <div class="upper">
+      <div class="datacontainer"> MOVIMIENTOS </div>
+      <div class="pokemonname"> NAME </div>
+      <div class="datacontainer"> RESISTENCIAS </div>
+
+  </div>
+  <div class="line"> </div>
+  <div class="circle">
+      <form action="#" method="post" enctype="multipart/form-data">
+          <input type="file" name="imagen" accept="image/*" >
+          <input type="submit" value="Subir imágen" onclick="mostrarImagen()">
+      </form>
+  </div>
+  <div class="lower">
+      <div class="datacontainer"> HABILIDADES </div>
+      <div class="pokemontypes"> TIPOS </div>
+      <div class="datacontainer"> DEBILIDADES </div>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
