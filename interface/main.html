@@ -2,28 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Pokemonos GPT</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Pokimonos GPT</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body> 
+<body>
   <div class="upper">
-      <div class="datacontainer"> MOVIMIENTOS </div>
-      <div class="pokemonname"> NAME </div>
-      <div class="datacontainer"> RESISTENCIAS </div>
+      <div class="datacontainer" style="visibility: hidden;"> </div>
+      <div class="pokemonname">
+              <p id="titulo">Sube la imagen de un Pokémon</p>
+      </div>
+      <div class="datacontainer" style="visibility: hidden;"> </div>
 
   </div>
   <div class="line"> </div>
   <div class="circle">
       <form action="#" method="post" enctype="multipart/form-data">
-          <input type="file" name="imagen" accept="image/*" >
-          <input type="submit" value="Subir imágen" onclick="mostrarImagen()">
+          <input type="file" name="imagen" accept="image/*" required>
+          <input type="submit" value="Subir imágen">
       </form>
   </div>
   <div class="lower">
-      <div class="datacontainer"> HABILIDADES </div>
-      <div class="pokemontypes"> TIPOS </div>
-      <div class="datacontainer"> DEBILIDADES </div>
+      <div class="datacontainer" style="visibility: hidden;"> </div>
+      <div class="pokemontypes" style="visibility: hidden;"> </div>
+      <div class="datacontainer" style="visibility: hidden;"> </div>
   </div>
-  <script src="script.js"></script>
+  <!-- <script src="script.js"></script> -->
 </body>
 </html>

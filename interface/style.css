@@ -2,11 +2,11 @@
 html{
     padding: 0;
     display: block;
-	
+
     height: 100%;
     min-height: 100%;
     font-family:Arial, Helvetica, sans-serif;
-    background: #FFFFFF; 
+    background: #FFFFFF;
 
     /* From acc */
     color: black;
@@ -44,7 +44,7 @@ body{
 
     display: flex;
     justify-content: space-between;
-    
+
 }
 
 .datacontainer{
@@ -70,7 +70,13 @@ body{
     width: 35%;
     background-color: white;
     border: 8px solid #000;
+    text-align: center;
 
+}
+
+.pokemonname #titulo{
+    font-size: 35px;
+    font-weight: bold;
 }
 
 .pokemontypes{
@@ -120,4 +126,10 @@ body{
 
 .circle input[type="file"] {
     margin-bottom: 10px;
+}
+
+.circle img {
+        margin: 7vh;
+        min-width: 256px;
+        max-width: 256px;
 }
