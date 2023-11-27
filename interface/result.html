@@ -21,11 +21,12 @@
                       {% endfor %}
               </ul>
               <!-- Si no tiene inmunidades, no mostrar -->
-              {% if immunities %}
+              {% if immunity == [] %}
+	      {% else %}
               <p> INMUNIDADES </p>
               <ul class="immunities">
-                      {% for immunity in immunities %}
-                      <li>{{immunity}}</li>
+                      {% for i in immunity %}
+                      <li>{{i}}</li>
                       {% endfor %}
               </ul>
               {% endif %}
@@ -42,6 +43,8 @@
               <ul class="abilities">
                       {% for ability in abilities %}
                       <li>{{ability}}</li>
+		      <li>{{abilities[ability]}}</li>
+		      <br>
                       {% endfor %}
       </div>
       <div class="pokemontypes">
