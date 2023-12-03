@@ -21,11 +21,43 @@ app = Flask(__name__, template_folder='.', static_folder='.', static_url_path=''
 # Cargar el modelo
 modelo = load_model('../modelo/modelo.hdf5')
 # Copiar las clases del cuadernillo
-clases = {0: 'Bulbasaur', 1: 'Caterpie', 2: 'Charizard', 3: 'Charmander',
-          4: 'Dragonite', 5: 'Eevee', 6: 'Gengar', 7: 'Geodude', 8: 'Greninja',
-          9: 'Jigglypuff', 10: 'Lapras', 11: 'Machop', 12: 'Magikarp',
-          13: 'Meowth', 14: "MrMime", 15: 'Pikachu', 16: 'Rattata',
-          17: 'Rayquaza', 18: 'Snorlax', 19: 'Squirtle'}
+clases = {0: 'Abra', 1: 'Aerodactyl', 2: 'Alakazam', 3: 'Arbok',
+          4: 'Arcanine', 5: 'Articuno', 6: 'Beedrill', 7: 'Bellsprout',
+          8: 'Blastoise', 9: 'Bulbasaur', 10: 'Butterfree', 11: 'Caterpie',
+          12: 'Chansey', 13: 'Charizard', 14: 'Charmander', 15: 'Charmeleon',
+          16: 'Clefable', 17: 'Clefairy', 18: 'Cloyster', 19: 'Cubone',
+          20: 'Dewgong', 21: 'Diglett', 22: 'Ditto', 23: 'Dodrio', 24: 'Doduo',
+          25: 'Dragonair', 26: 'Dragonite', 27: 'Dratini', 28: 'Drowzee',
+          29: 'Dugtrio', 30: 'Eevee', 31: 'Ekans', 32: 'Electabuzz',
+          33: 'Electrode', 34: 'Exeggcute', 35: 'Exeggutor', 36: 'Farfetchd',
+          37: 'Fearow', 38: 'Flareon', 39: 'Gastly', 40: 'Gengar',
+          41: 'Geodude', 42: 'Gloom', 43: 'Golbat', 44: 'Goldeen',
+          45: 'Golduck', 46: 'Golem', 47: 'Graveler', 48: 'Greninja',
+          49: 'Grimer', 50: 'Growlithe', 51: 'Gyarados', 52: 'Haunter',
+          53: 'Hitmonchan', 54: 'Hitmonlee', 55: 'Horsea', 56: 'Hypno',
+          57: 'Ivysaur', 58: 'Jigglypuff', 59: 'Jolteon', 60: 'Jynx',
+          61: 'Kabuto', 62: 'Kabutops', 63: 'Kadabra', 64: 'Kakuna',
+          65: 'Kangaskhan', 66: 'Kingler', 67: 'Koffing', 68: 'Krabby',
+          69: 'Lapras', 70: 'Lickitung', 71: 'Machamp', 72: 'Machoke',
+          73: 'Machop', 74: 'Magikarp', 75: 'Magmar', 76: 'Magnemite',
+          77: 'Magneton', 78: 'Mankey', 79: 'Marowak', 80: 'Meowth',
+          81: 'Metapod', 82: 'Mew', 83: 'Mewtwo', 84: 'Moltres', 85: 'MrMime',
+          86: 'Muk', 87: 'Nidoking', 88: 'Nidoqueen', 89: 'Nidorina',
+          90: 'Nidorino', 91: 'Ninetales', 92: 'Oddish', 93: 'Omanyte',
+          94: 'Omastar', 95: 'Onix', 96: 'Paras', 97: 'Parasect', 98: 'Persian',
+          99: 'Pidgeot', 100: 'Pidgeotto', 101: 'Pidgey', 102: 'Pikachu',
+          103: 'Pinsir', 104: 'Poliwag', 105: 'Poliwhirl', 106: 'Poliwrath',
+          107: 'Ponyta', 108: 'Porygon', 109: 'Primeape', 110: 'Psyduck',
+          111: 'Raichu', 112: 'Rapidash', 113: 'Raticate', 114: 'Rattata',
+          115: 'Rayquaza', 116: 'Rhydon', 117: 'Rhyhorn', 118: 'Sandshrew',
+          119: 'Sandslash', 120: 'Scyther', 121: 'Seadra', 122: 'Seaking',
+          123: 'Seel', 124: 'Shellder', 125: 'Slowbro', 126: 'Slowpoke',
+          127: 'Snorlax', 128: 'Spearow', 129: 'Squirtle', 130: 'Starmie',
+          131: 'Staryu', 132: 'Tangela', 133: 'Tauros', 134: 'Tentacool',
+          135: 'Tentacruel', 136: 'Vaporeon', 137: 'Venomoth', 138: 'Venonat',
+          139: 'Venusaur', 140: 'Victreebel', 141: 'Vileplume', 142: 'Voltorb',
+          143: 'Vulpix', 144: 'Wartortle', 145: 'Weedle', 146: 'Weepinbell',
+          147: 'Weezing', 148: 'Wigglytuff', 149: 'Zapdos', 150: 'Zubat'}
 
 
 @app.route('/', methods=['GET', 'POST'])
