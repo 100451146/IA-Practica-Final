@@ -161,17 +161,27 @@ def stats_pokemon(pokemon_name):
     habilidades = dict(zip(habilidades_nombre, habilidades_descripcion))
     print(habilidades)
 
-    # SMOGON
-    # De Smogon vamos a sacar los movimientos
-    url = 'https://www.smogon.com/dex/rb/pokemon/' + pokemon_name
-    print('#' * 50)
-    print('Smogon')
+    # WIKIDEX - ANEXO: MOVIMIENTOS
     # MOVIMENTOS
+    # Vamos a pedir otra página de wikidex para obtener los movimientos
+    url = f'https://www.wikidex.net/wiki/Anexo:{pokemon_name}/Movimientos_por_nivel/G1'
+    # url = 'https://www.smogon.com/dex/rb/pokemon/' + pokemon_name.lower()
+    print('#' * 50)
+    soup = BeautifulSoup(requests.get(url).content, 'html.parser')
+    # Seleccionamos los 4 ultimos elementos de la tabla de clase "movnivel"
+    tabla_mov = soup.findAll('table', class_='movnivel')
+    tabla_mov = [m.findAll('tr') for m in tabla_mov][-1][-4:]
+    # En cada fila hay 3 elementos <td>, el primero es el nivel, el segundo
+    # es el nombre del movimiento y el tercero es el tipo
+    tabla_mov = [m.findAll('td') for m in tabla_mov]
+    tabla_mov = [[m[0].text.strip(), m[1].text.strip(), m[2].find('a')['title']] for m in tabla_mov]
+    tabla_mov = [f"Nivel {m[0]}: {m[1]} ({m[2]})" for m in tabla_mov]
+    print('movimientos\t', tabla_mov)
     print('#' * 50)
     return render_template('result.html', pokemon_name=pokemon_name,
                            types=tipos, abilities=habilidades,
                            weaknesses=debilidades, resistances=resistencias,
-                           immunity=tabla_inmunidad)
+                           immunity=tabla_inmunidad, moves=tabla_mov)
 
 
 if __name__ == '__main__':

@@ -9,6 +9,10 @@
   <div class="upper">
       <div class="datacontainer">
               <p> MOVIMIENTOS </p>
+	      <ul class="moves">
+		      {% for move in moves %}
+		      <li>{{move}}</li>
+		      {% endfor %}
       </div>
       <div class="pokemonname">
               <p id="titulo">{{pokemon_name}}</p>
