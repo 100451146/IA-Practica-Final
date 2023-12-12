@@ -5,7 +5,7 @@ html{
 
     height: 100%;
     min-height: 100%;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     background: #FFFFFF;
 
     /* From acc */
@@ -13,7 +13,7 @@ html{
 
 }
 
-body{
+body {
     padding: 0;
     display: flex;
     flex-direction: column;
@@ -23,8 +23,9 @@ body{
     width: inherit;
     height: inherit;
 }
+
 .upper{
-    top:0;
+    top: 0;
     width: 100%;
     height: 50%;
     background-color: #B42222;
@@ -33,10 +34,12 @@ body{
     justify-content: space-between; /* Alineación horizontal */
 
 }
-.line{
+
+.line {
     border-top: 8px solid #000; /* Línea negra de grosor 8px */
     width: 100%; /* Opcional: ocupa el 100% del ancho del contenedor */
-  }
+}
+
 .lower{
     width: 100%;
     height: 50%;
@@ -48,33 +51,63 @@ body{
 }
 
 .datacontainer{
-    margin-top:30px;
+    margin-top: 30px;
     margin-bottom: 30px;
     margin-left: 40px;
-    margin-right:40px;
+    margin-right: 40px;
     border-radius: 35px;
     height: 80%;
     width: 25%;
     background-color: white;
     border: 8px solid #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 
+.datacontainer p {
+    font-weight: bold;
+    position: relative;
+    font-size: 25px;
+}
+
+.datacontainer ul {
+        list-style: none;
+        margin-left: -150px;
+}
+
+.moves li+li {
+        margin-top: 20px;
+}
+
+.moves {
+        top: -30px;
+        position: relative;
+}
+
+.resistances li+li {
+        margin-top: 5px;
+}
+
+.weaknesses li+li {
+        margin-top: 15px;
 }
 
 .pokemonname{
-    margin-top:30px;
+    margin-top: 30px;
     margin-bottom: 30px;
     margin-left: 20px;
-    margin-right:20px;
+    margin-right: 20px;
     border-radius: 60px;
     height: 25%;
     width: 35%;
     background-color: white;
     border: 8px solid #000;
     text-align: center;
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 .pokemonname #titulo{
@@ -86,27 +119,41 @@ body{
     align-self: flex-end;
     margin-bottom: 50px;
     margin-left: 20px;
-    margin-right:20px;
+    margin-right: 20px;
     border-radius: 60px;
     height: 25%;
     width: 35%;
     background-color: white;
     border: 8px solid #000;
+}
 
+.pokemontypes ul {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        row-gap: 150px;
+        font-size: 25px;
+        margin-top: 47px;
+}
+
+.pokemontypes li+li {
+        margin-left: 150px;
 }
 
 .circle {
-    top:0;
-    left:0;
+    top: 0;
+    left: 0;
     right: 0;
     bottom: 0;
-    margin:auto;
+    margin: auto;
     width: 400px; /* Diámetro del círculo */
     height: 400px; /* Diámetro del círculo */
     background-color: #ffffff; /* Color del círculo (negro en este caso) */
     border: 8px solid #000;
     border-radius: 50%; /* Hace que el elemento tenga bordes redondos, creando un círculo */
-    position:absolute;
+    position: absolute;
   }
 
   .circle form {
@@ -132,7 +179,11 @@ body{
 }
 
 .circle img {
-        margin: 7vh;
-        min-width: 256px;
-        max-width: 256px;
+        margin: 1.4vh;
+	object-fit: cover;
+        min-width: 375px;
+        max-width: 375px;
+	min-height: 375px;
+	max-height: 375px;
+	border-radius: 50%;
 }

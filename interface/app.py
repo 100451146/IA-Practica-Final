@@ -14,6 +14,8 @@ import requests
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
 import numpy as np
+import cv2
+from PIL import Image
 
 # Creamos la aplicación de flask
 app = Flask(__name__, template_folder='.', static_folder='.', static_url_path='')
@@ -41,7 +43,7 @@ clases = {0: 'Abra', 1: 'Aerodactyl', 2: 'Alakazam', 3: 'Arbok',
           69: 'Lapras', 70: 'Lickitung', 71: 'Machamp', 72: 'Machoke',
           73: 'Machop', 74: 'Magikarp', 75: 'Magmar', 76: 'Magnemite',
           77: 'Magneton', 78: 'Mankey', 79: 'Marowak', 80: 'Meowth',
-          81: 'Metapod', 82: 'Mew', 83: 'Mewtwo', 84: 'Moltres', 85: 'MrMime',
+          81: 'Metapod', 82: 'Mew', 83: 'Mewtwo', 84: 'Moltres', 85: 'Mr._Mime',
           86: 'Muk', 87: 'Nidoking', 88: 'Nidoqueen', 89: 'Nidorina',
           90: 'Nidorino', 91: 'Ninetales', 92: 'Oddish', 93: 'Omanyte',
           94: 'Omastar', 95: 'Onix', 96: 'Paras', 97: 'Parasect', 98: 'Persian',
@@ -67,10 +69,19 @@ def subir_imagen():
         # Guardamos la imagen que han subido como imagen.jpg
         imagen = request.files['imagen']
         imagen.save('./imagen.jpg')
+
+        # Procesamos la imagen para que el modelo la pueda leer
+        imagen = Image.open('./imagen.jpg')
+        imagen = imagen.resize((128, 128))
+        imagen.save('./gray.png')
+        imagen = cv2.imread('./gray.png')
+        imagen = cv2.cvtColor(imagen, cv2.COLOR_BGR2GRAY)
+        cv2.imwrite('./gray.png', imagen)
+
         # Cargamos la imagen para que el modelo prediga
-        imagen = image.load_img('./imagen.jpg', target_size=(128, 128))
-        imagen_array = image.img_to_array(imagen)
-        imagen_array = np.expand_dims(imagen_array, axis=0)
+        imagen = image.load_img('./gray.png', target_size=(128, 128))
+        imagen = image.img_to_array(imagen)
+        imagen_array = np.expand_dims(imagen, axis=0)
         # Predecimos con el modelo y devolvemos la prediccion
         prediccion = modelo.predict(imagen_array)
         prediccion = np.argmax(prediccion)
@@ -131,9 +142,14 @@ def stats_pokemon(pokemon_name):
 
     # MEGADEXTER
     # De Megadexter vamos a sacar los tipos y habilidades
-    url = 'https://megadexter.com/dex/pokemon/' + pokemon_name
-    pagina = requests.get(url)
-    soup = BeautifulSoup(pagina.content, 'html.parser')
+    # if pokemon_name == 'Mr._Mime':
+    # url = 'https://megadexter.com/dex/pokemon/MrMime'
+    # else:
+    # url = 'https://megadexter.com/dex/pokemon/' + pokemon_name
+    # pagina = requests.get(url)
+    # soup = BeautifulSoup(pagina.content, 'html.parser')
+    pagina = open(f'{pokemon_name}.html', 'r')
+    soup = BeautifulSoup(pagina.read(), 'html.parser')
     print('#' * 50)
     print('Megadexter')
     # Toda la información está en divs con clase "row"
@@ -164,7 +180,10 @@ def stats_pokemon(pokemon_name):
     # WIKIDEX - ANEXO: MOVIMIENTOS
     # MOVIMENTOS
     # Vamos a pedir otra página de wikidex para obtener los movimientos
-    url = f'https://www.wikidex.net/wiki/Anexo:{pokemon_name}/Movimientos_por_nivel/G1'
+    if pokemon_name == 'Pikachu':
+        url = f'https://www.wikidex.net/wiki/Anexo:{pokemon_name}/Movimientos_por_nivel/Ra'
+    else:
+        url = f'https://www.wikidex.net/wiki/Anexo:{pokemon_name}/Movimientos_por_nivel/G1'
     # url = 'https://www.smogon.com/dex/rb/pokemon/' + pokemon_name.lower()
     print('#' * 50)
     soup = BeautifulSoup(requests.get(url).content, 'html.parser')

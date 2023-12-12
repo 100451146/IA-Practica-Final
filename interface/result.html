@@ -8,7 +8,7 @@
 <body>
   <div class="upper">
       <div class="datacontainer">
-              <p> MOVIMIENTOS </p>
+              <p style="top: -50px"> MOVIMIENTOS </p>
 	      <ul class="moves">
 		      {% for move in moves %}
 		      <li>{{move}}</li>
@@ -18,22 +18,19 @@
               <p id="titulo">{{pokemon_name}}</p>
       </div>
       <div class="datacontainer">
-              <p> RESISTENCIAS </p>
+              <p style="top: 0";> RESISTENCIAS </p>
               <ul class="resistances">
-                      {% for resistance in resistances %}
-                      <li>{{resistance}}</li>
-                      {% endfor %}
+		      {% for resistance in resistances %}
+		      <li>{{resistance}}</li>
+		      {% endfor %}
+		      <br>
+		      {% if immunity != [] %}
+		      {% for i in immunity %}
+		      <li style="font-weight: bold">{{i}}</li>
+		      {% endfor %}
+		      {% else %}
+		      {% endif %}
               </ul>
-              <!-- Si no tiene inmunidades, no mostrar -->
-              {% if immunity == [] %}
-	      {% else %}
-              <p> INMUNIDADES </p>
-              <ul class="immunities">
-                      {% for i in immunity %}
-                      <li>{{i}}</li>
-                      {% endfor %}
-              </ul>
-              {% endif %}
       </div>
 
   </div>
@@ -44,9 +41,9 @@
   <div class="lower">
       <div class="datacontainer">
               <p> HABILIDADES </p>
-              <ul class="abilities">
+              <ul class="abilities" style="margin-left: -100px;">
                       {% for ability in abilities %}
-                      <li>{{ability}}</li>
+                      <li style="font-weight: bold;">{{ability}}</li>
 		      <li>{{abilities[ability]}}</li>
 		      <br>
                       {% endfor %}
