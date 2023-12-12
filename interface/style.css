@@ -71,6 +71,9 @@ body{
     background-color: white;
     border: 8px solid #000;
     text-align: center;
+    display:flex;
+    justify-content: center;
+    align-items: center;
 
 }
 
